@@ -43,31 +43,6 @@ Create a `.env` file in the project root (it is ignored by git).
 
 - **`DATABASE_URL`**: PostgreSQL connection string used by Prisma
 
-Example:
-
-```bash
-DATABASE_URL="postgresql://postgres:postgres@localhost:5432/bun_repair_service?schema=public"
-```
-
-### Database (Prisma)
-- **Generate client**:
-
-```bash
-bunx prisma generate
-```
-
-- **Create a new migration (dev)**:
-
-```bash
-bunx prisma migrate dev --name <migration_name>
-```
-
-- **Apply migrations (production/CI)**:
-
-```bash
-bunx prisma migrate deploy
-```
-
 ### Scripts
 Defined in `package.json`:
 - **`bun run dev`**: run server with watch (`src/index.ts`)
@@ -119,10 +94,3 @@ Base URL: **`/api`**
 - **`src/controllers/*.ts`**: request handlers (Prisma queries)
 - **`prisma/schema.prisma`**: database schema
 - **`prisma/migrations/`**: migration history
-
-### Notes (production readiness)
-- **JWT secret**: currently configured in code; for production, move to an env var (e.g. `JWT_SECRET`) and rotate it.
-- **Port**: currently fixed to `3001`; consider making it configurable via env var (e.g. `PORT`).
-
-### License
-Add your license here (e.g. MIT) if this repository is intended to be open-sourced.
